@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import Headers from './Components/Headers'
+import { Outlet } from 'react-router-dom';
+import MusicPlayer from '../src/Page/MusicPlayer'
+import { SongProvider } from './Context/SongContext';
+
 
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <SongProvider>
+    <div>
+   
+      <div>
+      <Headers/>
+      <main className='min-h-[calc(100vh-120px)] -mb-14'>
+       <Outlet />
+       </main>
+       <div className='mt-5'>
+       <div className='fixed bottom-0 left-0 right-0'><MusicPlayer/></div>
+       </div>
+       </div>
+       
     </div>
+    </SongProvider>
   );
 }
 
